@@ -1,0 +1,39 @@
+﻿@model ExercicesControlleursEtVue.Models.HistoriqueModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Historique</title>
+</head>
+<body>
+    <div>
+        Il y a actuellement <b>@Model.NombreOperationsEnBDD</b> opérations effectuées
+        <table>
+            <thead>
+                <tr>
+                    <th>Operande gauche</th>
+                    <th>Opérateur</th>
+                    <th>Operande droite</th>
+                    <th></th>
+                    <th>Résultat :</th>
+                </tr>
+            </thead>
+            @foreach (var operation in Model.OperationsDansLaBDD)
+            {
+                <tr>
+                    <td>@operation.OperandeGauche</td>
+                    <td>@operation.Operateur</td>
+                    <td>@operation.OperandeDroite</td>
+                    <td>=</td>
+                    <td>@operation.GetResultat()</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
